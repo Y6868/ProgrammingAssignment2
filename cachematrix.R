@@ -1,9 +1,4 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
-
+library(MASS)
 ## the function creates an object that caches its inverse 
 makeCacheMatrix <- function(x = matrix()) { 
   inv <- NULL 
@@ -12,14 +7,13 @@ makeCacheMatrix <- function(x = matrix()) {
     inv <<- NULL 
   }
   
-  get <- function() x 
+  get <- function() x #to obtain inverse
   setInverse <- function(solveMatrix) inv <<- solveMatrix 
   getInverse <- function() inv 
   list(set = set, get = get, setInverse = setInverse, getInverse = getInverse) 
 }
 
 
-## the function gets the inverse of the object returned
 cacheSolving <- function(x, ...) { 
   ## Return matrix inverse of x 
   inv <- x$getInverse() 
@@ -27,7 +21,7 @@ cacheSolving <- function(x, ...) {
     message("Getting Cache") 
     return(inv) }
   data <- x$get() 
-  inv <- solve(data) 
+  inv <- mean(data) 
   x$setInverse(inv) 
   inv 
 }
